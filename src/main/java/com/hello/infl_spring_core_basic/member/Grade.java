@@ -12,5 +12,5 @@ package com.hello.infl_spring_core_basic.member;
  * 2024-03-06        user       최초 생성
  */
 public enum Grade {
-    VIP
+    BASIC, VIP
 }
