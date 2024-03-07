@@ -2,6 +2,7 @@ package com.hello.infl_spring_core_basic;
 
 import com.hello.infl_spring_core_basic.discount.DiscountPolicy;
 import com.hello.infl_spring_core_basic.discount.FixDiscountPolicy;
+import com.hello.infl_spring_core_basic.discount.RateDiscoutPolicy;
 import com.hello.infl_spring_core_basic.member.MemberRepository;
 import com.hello.infl_spring_core_basic.member.MemberService;
 import com.hello.infl_spring_core_basic.member.MemberServiceImpl;
@@ -21,7 +22,8 @@ import com.hello.infl_spring_core_basic.order.OrderServiceImpl;
  * 2024-03-07        user       최초 생성
  */
 public class AppConfig {
-
+    // AppConfig = 공연 기획자
+    // 배역과 배우를 결정
 
     // 메소드 분리 -> 역할과 구현에 대한 정보가 한눈에 보이게 된다.
     private MemberRepository memberRepository() {
@@ -29,7 +31,9 @@ public class AppConfig {
     }
 
     public DiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
+        // 개발영역이 아닌 구성영역만 수정하여 가능
+        //return new FixDiscountPolicy();
+        return new RateDiscoutPolicy();
     }
 
     //생성자 주입

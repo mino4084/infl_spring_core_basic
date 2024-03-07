@@ -34,7 +34,7 @@ public class OrderApp {
         memberService.join(member);
 
         //orderService.createOrder(memberId, "itemA", 10000);
-        System.out.println("order = " + orderService.createOrder(memberId, "itemA", 10000));
-        System.out.println("calculatePrice = " + orderService.createOrder(memberId, "itemA", 10000).calculatePrice());
+        System.out.println("order = " + orderService.createOrder(memberId, "itemA", 20000));
+        System.out.println("calculatePrice = " + orderService.createOrder(memberId, "itemA", 20000).calculatePrice());
     }
 }
