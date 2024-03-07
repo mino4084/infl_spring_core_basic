@@ -1,6 +1,8 @@
 package com.hello.infl_spring_core_basic;
 
+import com.hello.infl_spring_core_basic.discount.DiscountPolicy;
 import com.hello.infl_spring_core_basic.discount.FixDiscountPolicy;
+import com.hello.infl_spring_core_basic.member.MemberRepository;
 import com.hello.infl_spring_core_basic.member.MemberService;
 import com.hello.infl_spring_core_basic.member.MemberServiceImpl;
 import com.hello.infl_spring_core_basic.member.MemoryMemberRepository;
@@ -20,12 +22,24 @@ import com.hello.infl_spring_core_basic.order.OrderServiceImpl;
  */
 public class AppConfig {
 
-    public MemberService memberService() {
-        // 생성자를 통해 MemoryMemberRepository가 주입시키도록 설정한다.
-        return new MemberServiceImpl(new MemoryMemberRepository());
+
+    // 메소드 분리 -> 역할과 구현에 대한 정보가 한눈에 보이게 된다.
+    private MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
     }
 
-    public OrderService orderService() {
-        return new OrderServiceImpl(new MemoryMemberRepository(), new FixDiscountPolicy());
+    public DiscountPolicy discountPolicy() {
+        return new FixDiscountPolicy();
     }
+
+    //생성자 주입
+    public MemberService memberService() {
+        return new MemberServiceImpl(memberRepository());
+    }
+    
+    public OrderService orderService() {
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
+    }
+
+
 }
