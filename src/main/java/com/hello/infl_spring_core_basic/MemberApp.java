@@ -18,7 +18,16 @@ import com.hello.infl_spring_core_basic.member.MemberServiceImpl;
  */
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+
+        
+        // 기존 코드는 인터페이스와 구현체까지 의존했지만
+        //MemberService memberService = new MemberServiceImpl();
+
+        // AppConfig를 활용하여 인터페이스에만 의존하게 바꿈
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        //memberService <- MemoryMemberRepository를 사용하는 MemberServiceImpl() 객체가 들어가있음
+
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
