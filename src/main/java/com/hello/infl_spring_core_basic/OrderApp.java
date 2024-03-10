@@ -6,6 +6,9 @@ import com.hello.infl_spring_core_basic.member.MemberService;
 import com.hello.infl_spring_core_basic.member.MemberServiceImpl;
 import com.hello.infl_spring_core_basic.order.OrderService;
 import com.hello.infl_spring_core_basic.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 /**
  * packageName    : com.hello.infl_spring_core_basic
@@ -23,10 +26,17 @@ public class OrderApp {
         //MemberService memberService = new MemberServiceImpl();
         //OrderService orderService = new OrderServiceImpl();
 
-
+        /*
         AppConfig appConfig = new AppConfig();
         MemberService memberService = appConfig.memberService();
         OrderService orderService = appConfig.orderService();
+         */
+
+
+        // 스프링으로 전환
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
 
 
         Long memberId = 1L;
