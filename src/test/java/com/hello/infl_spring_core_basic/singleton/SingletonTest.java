@@ -6,6 +6,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * packageName    : com.hello.infl_spring_core_basic.singleton
  * fileName       : SingletonTest
@@ -37,8 +39,22 @@ public class SingletonTest {
         // memberService1 = com.hello.infl_spring_core_basic.member.MemberServiceImpl@2aa5fe93
         // memberService2 = com.hello.infl_spring_core_basic.member.MemberServiceImpl@5c1a8622
 
-        Assertions.assertThat(memberService1).isNotSameAs(memberService2);
+        assertThat(memberService1).isNotSameAs(memberService2);
         
         // 일반적인 웹 애플리케이션에서는 무수히 많은 요청이 생성되므로, 요청이 올때마다 객체가 생성되고 소멸되니 메모리 낭비 발생
+    }
+    
+    @Test
+    @DisplayName("싱글톤 패턴을 적용한 객체 사용")
+    void singletonServiceTest() {
+        SingletonService singletonService1 = SingletonService.getInstance();
+        SingletonService singletonService2 = SingletonService.getInstance();
+
+        System.out.println("singletonService1 = " + singletonService1);
+        System.out.println("singletonService2 = " + singletonService2);
+
+        assertThat(singletonService1).isSameAs(singletonService2);
+        //same -> 객체 인스턴스를 비교
+        //eqaul -> 단순 값 비교
     }
 }
