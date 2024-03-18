@@ -30,9 +30,27 @@ public class AppConfig {
     // AppConfig = 공연 기획자
     // 배역과 배우를 결정
 
+
+
+    //생성자 주입
+    @Bean
+    public MemberService memberService() {
+        System.out.println("call AppConfig.memberService");
+        return new MemberServiceImpl(memberRepository());
+    }
+
+    @Bean
+    public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
+    }
+
+
+
     // 메소드 분리 -> 역할과 구현에 대한 정보가 한눈에 보이게 된다.
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
@@ -43,16 +61,8 @@ public class AppConfig {
         return new RateDiscoutPolicy();
     }
 
-    //생성자 주입
-    @Bean
-    public MemberService memberService() {
-        return new MemberServiceImpl(memberRepository());
-    }
+
     
-    @Bean
-    public OrderService orderService() {
-        return new OrderServiceImpl(memberRepository(), discountPolicy());
-    }
 
 
 }
