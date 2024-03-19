@@ -4,6 +4,8 @@ import com.hello.infl_spring_core_basic.discount.DiscountPolicy;
 import com.hello.infl_spring_core_basic.member.Member;
 import com.hello.infl_spring_core_basic.member.MemberRepository;
 import com.hello.infl_spring_core_basic.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * packageName    : com.hello.infl_spring_core_basic.order
@@ -16,6 +18,7 @@ import com.hello.infl_spring_core_basic.member.MemoryMemberRepository;
  * -----------------------------------------------------------
  * 2024-03-06        user       최초 생성
  */
+@Component
 public class OrderServiceImpl implements OrderService {
 
     // 정액 할인 정책에서 정률 할인 정책으로 변경하는 경우, 코드를 아래와 같이 고쳐야한다.
@@ -40,6 +43,7 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
     // AppConfig에 의해 생성자 주입을 사용함
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
