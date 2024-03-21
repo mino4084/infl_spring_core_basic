@@ -1,5 +1,8 @@
 package com.hello.infl_spring_core_basic;
 
+import com.hello.infl_spring_core_basic.member.MemberRepository;
+import com.hello.infl_spring_core_basic.member.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -38,4 +41,10 @@ import org.springframework.context.annotation.FilterType;
 // @Autowired는 스프링 빈을 사용할 수 있도록 의존관계를 주입하는 역할이다
 // @Autowired에 명시된 인터페이스 타입으로 조회하여 같은 타입의 구현체를 주입해준다
 public class AutoAppConfig {
+        
+        // @Component 어노테이션으로 등록한 자동 등록 빈과 @Bean 어노테이션으로 수등 등록 빈이 충돌이 나면 수동이 우선권을 가짐
+        @Bean(name = "memoryMemberRepository")
+        public MemberRepository memberRepository() {
+                return new MemoryMemberRepository();
+        }
 }
