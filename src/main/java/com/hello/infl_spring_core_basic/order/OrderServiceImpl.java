@@ -43,7 +43,8 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
     // AppConfig에 의해 생성자 주입을 사용함
-    @Autowired
+    // OrderServiceImpl 가 @Component 어노테이션을 보고 스프링 빈으로 등록되면서 생성자 주입을 통해 의존관계를 주입한다.
+    // 생성자가 하나만 있는 경우, @Autowired 어노테이션을 생략할 수 있다.
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;

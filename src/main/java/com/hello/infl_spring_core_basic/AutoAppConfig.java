@@ -43,8 +43,11 @@ import org.springframework.context.annotation.FilterType;
 public class AutoAppConfig {
         
         // @Component 어노테이션으로 등록한 자동 등록 빈과 @Bean 어노테이션으로 수등 등록 빈이 충돌이 나면 수동이 우선권을 가짐
+        /*
         @Bean(name = "memoryMemberRepository")
         public MemberRepository memberRepository() {
                 return new MemoryMemberRepository();
         }
+
+         */
 }
