@@ -50,6 +50,12 @@ public class OrderServiceImpl implements OrderService {
         this.discountPolicy = discountPolicy;
     }
 
+    // 생성자 주입을 사용해야하는 이유
+    /*
+    * 대부분의 의존관계 주입은 한번 일어나면 애플리케이션 종료시점까지 의존관계를 변경할 일이 없다.
+    * final 키워드를 사용해야 생성자 주입 시에 필요한 소스를 입력하지 않으면 컴파일 오류가 발생한다.
+    * */
+
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
         Member member = memberRepository.findById(memberId);
