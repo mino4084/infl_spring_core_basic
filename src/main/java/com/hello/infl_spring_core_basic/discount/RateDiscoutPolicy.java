@@ -1,7 +1,10 @@
 package com.hello.infl_spring_core_basic.discount;
 
+import com.hello.infl_spring_core_basic.anntation.MainDiscountPolicy;
 import com.hello.infl_spring_core_basic.member.Grade;
 import com.hello.infl_spring_core_basic.member.Member;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,6 +19,9 @@ import org.springframework.stereotype.Component;
  * 2024-03-07        user       최초 생성
  */
 @Component
+//@Primary
+//@Qualifier("mainDiscountPolicy")
+@MainDiscountPolicy
 public class RateDiscoutPolicy implements DiscountPolicy {
 
     private int discountPercent = 10;

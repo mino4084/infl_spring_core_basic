@@ -1,5 +1,6 @@
 package com.hello.infl_spring_core_basic.order;
 
+import com.hello.infl_spring_core_basic.anntation.MainDiscountPolicy;
 import com.hello.infl_spring_core_basic.discount.DiscountPolicy;
 import com.hello.infl_spring_core_basic.member.Member;
 import com.hello.infl_spring_core_basic.member.MemberRepository;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Component;
  * 2024-03-06        user       최초 생성
  */
 @Component
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 // @RequiredArgsConstructor final 이 붙은 파라미터를 생성자 코드를 만들어준다 -> 생성자 코드 생략 가능
 public class OrderServiceImpl implements OrderService {
 
@@ -48,13 +49,12 @@ public class OrderServiceImpl implements OrderService {
     // AppConfig에 의해 생성자 주입을 사용함
     // OrderServiceImpl 가 @Component 어노테이션을 보고 스프링 빈으로 등록되면서 생성자 주입을 통해 의존관계를 주입한다.
     // 생성자가 하나만 있는 경우, @Autowired 어노테이션을 생략할 수 있다.
-    /*
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
-    
-     */
 
     // 생성자 주입을 사용해야하는 이유
     /*
