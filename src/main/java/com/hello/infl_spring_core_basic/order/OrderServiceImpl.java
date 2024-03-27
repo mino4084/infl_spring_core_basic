@@ -28,10 +28,10 @@ public class OrderServiceImpl implements OrderService {
     // 정액 할인 정책에서 정률 할인 정책으로 변경하는 경우, 코드를 아래와 같이 고쳐야한다.
     // 역할과 구현 분리 구현 -> Y
     // 다형성 구현 -> Y
-    // DIP -> X : OrderServiceImpl(주문서비스 클라이언트) 는 DiscountPolicy(추상)에 의존하지만, RateDiscoutPolicy or FixDiscountPolicy(구현)에도 의존한다
+    // DIP -> X : OrderServiceImpl(주문서비스 클라이언트) 는 DiscountPolicy(추상)에 의존하지만, RateDiscountPolicy or FixDiscountPolicy(구현)에도 의존한다
     // OCP -> X : 기능 확장에 따라 코드 수정이 불가피하다
     //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
-    //private final DiscountPolicy discountPolicy = new RateDiscoutPolicy();
+    //private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
     /*
     private DiscountPolicy discountPolicy;
     private MemberRepository memberRepository;

@@ -1,8 +1,7 @@
 package com.hello.infl_spring_core_basic;
 
 import com.hello.infl_spring_core_basic.discount.DiscountPolicy;
-import com.hello.infl_spring_core_basic.discount.FixDiscountPolicy;
-import com.hello.infl_spring_core_basic.discount.RateDiscoutPolicy;
+import com.hello.infl_spring_core_basic.discount.RateDiscountPolicy;
 import com.hello.infl_spring_core_basic.member.MemberRepository;
 import com.hello.infl_spring_core_basic.member.MemberService;
 import com.hello.infl_spring_core_basic.member.MemberServiceImpl;
@@ -58,7 +57,7 @@ public class AppConfig {
     public DiscountPolicy discountPolicy() {
         // 개발영역이 아닌 구성영역만 수정하여 가능
         //return new FixDiscountPolicy();
-        return new RateDiscoutPolicy();
+        return new RateDiscountPolicy();
     }
 
 

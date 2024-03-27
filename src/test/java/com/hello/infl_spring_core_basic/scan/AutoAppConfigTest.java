@@ -34,7 +34,7 @@ public class AutoAppConfigTest {
         OrderService bean2 = ac.getBean(OrderService.class);
         // RateDiscountPolicy, FixDiscountPolicy 모두 @Component로 스프링 빈 등록하고
         // OrderServiceImpl에서 DiscountPolicy 를 사용하면 타입으로 조회하기 때문에 
-        // No qualifying bean of type 'com.hello.infl_spring_core_basic.discount.DiscountPolicy' available: expected single matching bean but found 2: fixDiscountPolicy,rateDiscoutPolicy 오류가 발생한다
+        // No qualifying bean of type 'com.hello.infl_spring_core_basic.discount.DiscountPolicy' available: expected single matching bean but found 2: fixDiscountPolicy,rateDiscountPolicy 오류가 발생한다
 
 
     }

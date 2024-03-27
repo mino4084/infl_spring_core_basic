@@ -1,9 +1,8 @@
 package com.hello.infl_spring_core_basic.beanfind;
 
-import com.hello.infl_spring_core_basic.AppConfig;
 import com.hello.infl_spring_core_basic.discount.DiscountPolicy;
 import com.hello.infl_spring_core_basic.discount.FixDiscountPolicy;
-import com.hello.infl_spring_core_basic.discount.RateDiscoutPolicy;
+import com.hello.infl_spring_core_basic.discount.RateDiscountPolicy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,15 +40,15 @@ public class ApplicationContextExtendsFindTest {
     @DisplayName("부모 타입으로 조회 시 자식이 둘 이상 나오면, 빈 이름 지정하여 조회")
     void findBeanByParentTypeBeanName() {
         DiscountPolicy rateDiscountPolicy = ac.getBean("rateDiscountPolicy", DiscountPolicy.class);
-        assertThat(rateDiscountPolicy).isInstanceOf(RateDiscoutPolicy.class);
+        assertThat(rateDiscountPolicy).isInstanceOf(RateDiscountPolicy.class);
     }
 
 
     @Test
     @DisplayName("특정 하위 타입으로 조회")
     void findBeanBySubType() {
-        RateDiscoutPolicy rateDiscountPolicy = ac.getBean(RateDiscoutPolicy.class);
-        assertThat(rateDiscountPolicy).isInstanceOf(RateDiscoutPolicy.class);
+        RateDiscountPolicy rateDiscountPolicy = ac.getBean(RateDiscountPolicy.class);
+        assertThat(rateDiscountPolicy).isInstanceOf(RateDiscountPolicy.class);
     }
     
     @Test
@@ -79,7 +78,7 @@ public class ApplicationContextExtendsFindTest {
 
         @Bean
         public DiscountPolicy rateDiscountPolicy() {
-            return new RateDiscoutPolicy();
+            return new RateDiscountPolicy();
         }
     }
 }

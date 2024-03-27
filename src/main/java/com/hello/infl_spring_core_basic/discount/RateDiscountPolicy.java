@@ -3,13 +3,11 @@ package com.hello.infl_spring_core_basic.discount;
 import com.hello.infl_spring_core_basic.anntation.MainDiscountPolicy;
 import com.hello.infl_spring_core_basic.member.Grade;
 import com.hello.infl_spring_core_basic.member.Member;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
  * packageName    : com.hello.infl_spring_core_basic.discount
- * fileName       : RateDiscoutPolicy
+ * fileName       : RateDiscountPolicy
  * author         : user
  * date           : 2024-03-07
  * description    :
@@ -22,7 +20,7 @@ import org.springframework.stereotype.Component;
 //@Primary
 //@Qualifier("mainDiscountPolicy")
 @MainDiscountPolicy
-public class RateDiscoutPolicy implements DiscountPolicy {
+public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10;
     @Override
